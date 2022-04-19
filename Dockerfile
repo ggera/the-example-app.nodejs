@@ -15,9 +15,6 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json ./
 #RUN yarn install --frozen-lockfile
-COPY .env.local ./
-
-RUN cat .env.local
 
 RUN echo //npm.pkg.github.com/:_authToken=$REGISTRY_TOKEN >> ~/.npmrc
 RUN echo //npm.fontawesome.com/:_authToken=$FONTAWESOME_TOKEN >> ~/.npmrc
@@ -41,8 +38,6 @@ WORKDIR /app
 COPY . .
 RUN ln -s /tmp/app/node_modules node_modules
 
-
-RUN cat .env.local
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
